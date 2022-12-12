@@ -19,12 +19,4 @@ if __name__ == '__main__':
     for imagename in tqdm(srcFiles):
         img = cv2.imread(imagename)
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-        if dataset == 'ukbench':
-            img = cv2.resize(img, (320, 240))
-        else:
-            row, col, _ = img.shape
-            if row > col:
-                img = cv2.resize(img, (128, 192))
-            else:
-                img = cv2.resize(img, (192, 128))
         encryption_operation(img, dataset, encryption_key_permutation, encryption_key_selection, encryption_key_repalcement_r, encryption_key_repalcement_g, encryption_key_repalcement_b, imagename, block_size=16, rate=0.95)
